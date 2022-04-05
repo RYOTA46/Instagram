@@ -6,6 +6,8 @@
 //
 
 import UIKit
+//【カリキュラム】アプリ起動時にログイン有無の処理を追加
+import Firebase
 
 class TabBarController: UITabBarController, UITabBarControllerDelegate {
     
@@ -18,29 +20,42 @@ class TabBarController: UITabBarController, UITabBarControllerDelegate {
         // UITabBarControllerDelegateプロトコルのメソッドをこのクラスで処理する。
         self.delegate = self
     }
-
-    // タブバーのアイコンがタップされた時に呼ばれるdelegateメソッドを処理する。
-    func tabBarController(_ tabBarController: UITabBarController, shouldSelect viewController: UIViewController) -> Bool {
-        if viewController is ImageSelectViewController {
-            // ImageSelectViewControllerは、タブ切り替えではなくモーダル画面遷移する
-            let imageSelectViewController = storyboard!.instantiateViewController(withIdentifier: "ImageSelect")
-            present(imageSelectViewController, animated: true)
-            return false
-        } else {
-            // その他のViewControllerは通常のタブ切り替えを実施
-            return true
+    
+    //【カリキュラム】アプリ起動時にログイン有無の処理を追加
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        
+        // currentUserがnilならログインしていない
+        if Auth.auth().currentUser == nil {
+            // ログインしていないときの処理
+            let loginViewController = self.storyboard?.instantiateViewController(withIdentifier: "Login")
+            //【カリキュラム】モーダル遷移させる
+            self.present(loginViewController!, animated: true, completion: nil)
         }
+        
+        // タブバーのアイコンがタップされた時に呼ばれるdelegateメソッドを処理する。
+        func tabBarController(_ tabBarController: UITabBarController, shouldSelect viewController: UIViewController) -> Bool {
+            if viewController is ImageSelectViewController {
+                // ImageSelectViewControllerは、タブ切り替えではなくモーダル画面遷移する
+                let imageSelectViewController = storyboard!.instantiateViewController(withIdentifier: "ImageSelect")
+                present(imageSelectViewController, animated: true)
+                return false
+            } else {
+                // その他のViewControllerは通常のタブ切り替えを実施
+                return true
+            }
+        }
+        
     }
-
 }
 
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
-    }
-    */
+/*
+ // MARK: - Navigation
+ 
+ // In a storyboard-based application, you will often want to do a little preparation before navigation
+ override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+ // Get the new view controller using segue.destination.
+ // Pass the selected object to the new view controller.
+ }
+ */
 
