@@ -78,7 +78,6 @@
                     </view>
                     <connections>
                         <outlet property="displayNameTextField" destination="pSU-Lv-JJe" id="wyo-Vh-1GQ"/>
-                        <outlet property="handleLoginButton" destination="YBq-dN-FTO" id="ATn-02-QOj"/>
                         <outlet property="mailAddressTextField" destination="l9r-et-SkQ" id="Osg-nS-8an"/>
                         <outlet property="passwordTextField" destination="ybQ-q9-YhM" id="61V-d1-XpY"/>
                     </connections>
