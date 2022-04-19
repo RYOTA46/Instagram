@@ -64,11 +64,12 @@ class HomeViewController: UIViewController, UITableViewDataSource, UITableViewDe
 
         // セル内のボタンのアクションをソースコードで設定する
         cell.likeButton.addTarget(self, action:#selector(handleButton(_:forEvent:)), for: .touchUpInside)
+        cell.commentButton.addTarget(self, action:#selector(handleCommentButton(_:forEvent:)), for: .touchUpInside)
 
         return cell
     }
 
-    // セル内のボタンがタップされた時に呼ばれるメソッド
+    // セル内のボタンがタップされた時に呼ばれるメソッド（likeボタン）
     @objc func handleButton(_ sender: UIButton, forEvent event: UIEvent) {
         print("DEBUG_PRINT: likeボタンがタップされました。")
 
@@ -96,4 +97,47 @@ class HomeViewController: UIViewController, UITableViewDataSource, UITableViewDe
             postRef.updateData(["likes": updateValue])
         }
     }
+    
+    // コメントボタン押下処理
+    @objc func handleCommentButton(_ sender: UIButton, forEvent event: UIEvent) {
+        print("DEBUG_PRINT: commentボタンがタップされました。")
+
+        // タップされたセルのインデックスを求める
+        let touch = event.allTouches?.first
+        let point = touch!.location(in: self.tableView)
+        let indexPath = tableView.indexPathForRow(at: point)
+
+        // 配列からタップされたインデックスのデータを取り出す
+        let postData = postArray[indexPath!.row]
+        
+        var commentTextField = UITextField()
+        let ac = UIAlertController(title: "コメントを入力してください", message: "", preferredStyle: .alert)
+        let aa = UIAlertAction(title: "OK", style: .default) {
+            (action) in print(commentTextField.text!)
+            
+            let name = Auth.auth().currentUser!.displayName!
+            let comment = commentTextField.text!
+            let commentData = "\(name);\(comment)"
+            // 今回新たにいいねを押した場合は、myidを追加する更新データを作成
+            let updateValue = FieldValue.arrayUnion([commentData])
+            
+            // commentに更新データを書き込む
+            // firebaseの保存先情報を取得
+            let postRef = Firestore.firestore().collection(Const.PostPath).document(postData.id)
+            // firebaseにデータを登録
+            postRef.updateData(["comment": updateValue])
+            
+        }
+        ac.addTextField { (textField) in
+            textField.placeholder = "メモ"
+            commentTextField = textField
+        }
+        
+        ac.addAction(aa)
+        present(ac, animated: true, completion: nil)
+        
+    }
+    
+    
+    
 }
