@@ -8,6 +8,9 @@
 import UIKit
 import FirebaseStorageUI
 
+//【課題】firebaseからデータの取得
+import Firebase
+
 class PostTableViewCell: UITableViewCell {
 
     @IBOutlet weak var postImageView: UIImageView!
@@ -16,6 +19,7 @@ class PostTableViewCell: UITableViewCell {
     @IBOutlet weak var dateLabel: UILabel!
     @IBOutlet weak var captionLabel: UILabel!
     @IBOutlet weak var commentButton: UIButton!
+    @IBOutlet weak var commentLabel: UILabel!
     
     override func awakeFromNib() {
             super.awakeFromNib()
@@ -59,6 +63,12 @@ class PostTableViewCell: UITableViewCell {
                 let buttonImage = UIImage(named: "like_none")
                 self.likeButton.setImage(buttonImage, for: .normal)
             }
-        }
-    
+            
+            //【課題】コメントの表示
+            var commentData = ""
+            for comment in postData.comment {
+                commentData += "\(comment)\n"
+            }
+            self.commentLabel.text = commentData
+        }   
 }

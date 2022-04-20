@@ -100,6 +100,7 @@
             <connections>
                 <outlet property="captionLabel" destination="Uhp-ja-tOd" id="KjP-k7-5Rl"/>
                 <outlet property="commentButton" destination="HgA-VQ-Frj" id="2Na-rB-Y3L"/>
+                <outlet property="commentLabel" destination="EqL-F7-y0Y" id="oeM-WF-Ns4"/>
                 <outlet property="dateLabel" destination="Vcp-Np-w2L" id="jxG-pP-ZO2"/>
                 <outlet property="likeButton" destination="Aro-SU-sJU" id="Le2-Np-ZHa"/>
                 <outlet property="likeLabel" destination="SK3-43-FbH" id="CBU-LC-0g1"/>
