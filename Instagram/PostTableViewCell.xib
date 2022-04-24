@@ -14,7 +14,7 @@
         <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="616" id="KGk-i7-Jjw" customClass="PostTableViewCell" customModule="Instagram" customModuleProvider="target">
             <rect key="frame" x="0.0" y="0.0" width="320" height="616"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" ambiguous="YES" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
                 <rect key="frame" x="0.0" y="0.0" width="320" height="616"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
@@ -68,7 +68,7 @@
                     </button>
                     <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" ambiguous="YES" textAlignment="natural" id="vLq-eC-nTl">
                         <rect key="frame" x="26" y="428" width="268" height="128"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxX="YES" heightSizable="YES" flexibleMaxY="YES"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <color key="textColor" systemColor="labelColor"/>
                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
@@ -85,6 +85,7 @@
                     <constraint firstAttribute="trailingMargin" secondItem="FgJ-DF-poM" secondAttribute="trailing" id="Gvf-lF-hRX"/>
                     <constraint firstItem="vLq-eC-nTl" firstAttribute="top" secondItem="cD4-Sk-U5h" secondAttribute="bottom" constant="10" id="Kx3-HT-yud"/>
                     <constraint firstItem="Vcp-Np-w2L" firstAttribute="centerY" secondItem="Aro-SU-sJU" secondAttribute="centerY" id="MUm-7A-XsV"/>
+                    <constraint firstItem="cD4-Sk-U5h" firstAttribute="leading" secondItem="Uhp-ja-tOd" secondAttribute="leading" id="P8j-zO-Q2q"/>
                     <constraint firstItem="SK3-43-FbH" firstAttribute="centerY" secondItem="Aro-SU-sJU" secondAttribute="centerY" id="RVH-ON-6wS"/>
                     <constraint firstItem="HgA-VQ-Frj" firstAttribute="leading" secondItem="SK3-43-FbH" secondAttribute="trailing" constant="10" id="Yw7-KS-4iy"/>
                     <constraint firstItem="vLq-eC-nTl" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leadingMargin" constant="10" id="aoE-vm-JEM"/>
@@ -96,6 +97,7 @@
                     <constraint firstItem="SK3-43-FbH" firstAttribute="leading" secondItem="Aro-SU-sJU" secondAttribute="trailing" constant="10" id="l4Y-b8-qVD"/>
                     <constraint firstItem="FgJ-DF-poM" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="topMargin" constant="10" id="lVI-9l-2qx"/>
                     <constraint firstItem="Uhp-ja-tOd" firstAttribute="top" secondItem="Aro-SU-sJU" secondAttribute="bottom" constant="10" id="myd-uU-oN7"/>
+                    <constraint firstItem="vLq-eC-nTl" firstAttribute="leading" secondItem="Uhp-ja-tOd" secondAttribute="leading" id="xHh-1h-H9p"/>
                 </constraints>
             </tableViewCellContentView>
             <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
